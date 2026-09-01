@@ -7,6 +7,6 @@
 ### > [C++](cpp/cpp.md)
 ### > [HTML](/html/html.md)
 ### > [Java](java.md)
-### [MariaDB](/mysql/mysql.md)
-### > [Python](python.md)
+### > [MariaDB](/mysql/mysql.md)
+### > [Python](/python/python.md)
 ### > [Rust](/rust/rust.md)
