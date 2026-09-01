@@ -1,4 +1,4 @@
-### > [README.md](/README.md)
+### > [README.md](./README.md)
 [NOTE] **In Github, some formattings are broken. Formats such as image links (used in figures in diagrams) will not appear. For the best experience, use Obsidian's own flavor of Markdown.**
 # Tables of Contents
 ### > [Assembly](assembly/assembly.md)
