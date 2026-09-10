@@ -323,398 +323,396 @@
 					my_obj = MyClass()
 					my_obj.my_method()
 					```
-- methods are able to be deleted using the _del_ keyword
-- Syntax:
-```
-#> static methods
-del <class_name>.<method_name>
-#> non-static methods
-del <object_name>.<method_name>
-```
+			- Note:
+				- Methods are able to be deleted using the _del_ keyword.
+					- Syntax:
+						```
+						#> static methods
+						del <class_name>.<method_name>
+						#> non-static methods
+						del <object_name>.<method_name>
+						```
 
-- nested classes
-- classes can exist within classes
-- the main purpose of nedted classes is to group classes that belong together
-- inner classes are able to access the properties and methods from the outer classes
+	- Nested classes
+		- Definition:
+			- Classes can exist inside other classes.
+			- The main purpose of nested classes is to group classes that belong together.
+		- Declaration and definition
+			- Definition:
+				- Similar to declaring normal classes but is done inside of another class.
+			- Syntax:
+				```
+				class <outer_class_name>:
+					class <inner_class_name>:
+						<statements>
+				```
+			- Example:
+				```
+				class OuterClass:
+					class InnerClass
+						pass
+				```
 
-- declaration and definition
-- similar to declaring normal classes but done inside of one
-- Syntax:
-```
-class <outer_class_name>:
-	class <inner_class_name>:
-		<statements>
-```
-- Example:
-```
-class OuterClass:
-	class InnerClass
-		pass
-```
-- by default, inner clases don't have access to the properties and methods ofthe outer class
-- however, it is possible to access it by creating an object of the outer class inside the inner class
-- there are two ways:
-- static elements
-- Example:
-```
-class Yes:
-	my_var = 'yes'
-	class No:
-		Yes.my_var
-```
-- non-static
-- works by passing self into the inner class
-- Example:
-```
-class Outer:
-	def __init__(self, yes) -> None:
-		self.yes = yes
-		self.inner = self.Inner(self)
-	class Inner:
-		def __init__(self, outer_self) -> None:
-			self.outer = outer_self
-```
+		- Accessing inner classes
+			- Definition:
+				- To access an inner class, an object of the outer class must first be created.
+			- Syntax:
+				```
+				<object_name1> = <class_name>(<arguments>)
+				<object_name2> = <object_name1>.<inner_class_name>(<arguments>)
+				```
+			- Example:
+				```
+				my_outer = OuterClass()
+				my_inner = my_outer.InnerClass()
+				```
+		- Note:
+			- Inner classes are able to access the properties and methods from the outer classes.
+			- By default, inner classes don't have access to the properties and methods of the outer class.
+				- However, it is possible to access it by creating an object of the outer class inside the inner class.
+			- There are two ways:
+				- Static elements
+					- Example:
+						```
+						class Yes:
+							my_var = 'yes'
+							class No:
+								Yes.my_var
+						```
+				- Non-static elements
+					- Definition:
+						- Works by passing self into the inner class.
+					- Example:
+						```
+						class Outer:
+							def __init__(self, yes) -> None:
+								self.yes = yes
+								self.inner = self.Inner(self)
+							class Inner:
+								def __init__(self, outer_self) -> None:
+									self.outer = outer_self
+						```
+	- Python objects
+		- Definition:
+			- Objects are an instance of a class.
+		- Declaration and initialization
+			- Definition:
+				- To create an object, it must become an instance of a class.
+			- Syntax:
+				```
+				<object_name> = <class_name>()
+				```
+			- Example:
+				```
+				my_obj = MyClass()
+				```
+		- Note:
+			- It is possible to declare more than one instance of a class
+				- Example:
+					```
+					idk = MyClass()
+					man = MyClass()
+					```
+		- Access and deletion
+			- Definition:
+				- To remove or delete a class, the _del_ keyword is used.
+			- Syntax:
+				```
+				del <object_name>
+				```
+			- Example:
+				```
+				del my_obj
+				```
+	- Inheritance
+		- Definition:
+			- Allows child classes to reuse properties from the parent class.
+			- Prevents the duplication of the same methods and allows reusing without redeclaring the same methods.
+			- Inheritance is grouped into two categories:
+				- Parent class
+					- Also known as the superclass or the base class.
+					- It it where the child class inherits from.
+				- Child class
+					- Also knows as the subclass or the derived class.
+					- It is what inherits from the parent class.
+		- Declaration and definition
+			- Definition:
+				- In Python, inheritance is done by enclosing the parent class in parentheses, right next to the name of the child class/
+				- Syntax:
+					```
+					class <child_class_name>(<parent_class_name>):
+						<statements>
+					```
+				- Example:
+					```
+					class ChildClass(ParentClass):
+						pass
+					```
+		- Note:
+			- By default, when the _\_\_init\_\_()_ method is not declared in the child class, it uses the _\_\_init\_\_()_ method of the parent class.
+				- This is due to it inheriting every method including the constructor method, declaring another _\_\_init\_\_()_ method overrides parent class' _\_\_init\_\_()_ method.
+				- Syntax:
+					```
+					class <child_class_name>(<parent_class_name>):
+						def __init__(self, <parameters>) -> <return_type>:
+							<statements>
+					```
+			- Adding the parent's _\_\_init\_\_()_ method will complete the inheritance and without it, it loses access to the properties of the parent class.
+				- Syntax:
+					```
+					class <child_class_name>(<parent_class_name>):
+						def __init__(self, <parameters>) -> <return_type>:
+							<parent_class_name>.__init__(self, <parameters>)
+					```
+				- Example:
+					```
+					class ChildClass(ParentClass):
+						def __init__(self, yes, no) -> None:
+							ParentClass.__init__(self, yes, no)
+					```
+		- _super()_
+			- Definition:
+				- Lets the child inherit all properties and methods from its parent class, replacing the parent's _\_\__init\_\_()_ method of inheriting.
+			- Syntax:
+				```
+				class <child_class_name>(<parent_class_name>):
+					def __init__(self, <parameters>) -> <return_type>:
+						super().__init__(<parameters>)
+				```
+			- Example:
+				```
+				class ChildClass(ParentClass):
+					def __init__(self, yes) -> None:
+						super().__init__(yes)
+				```
+			- Note:
+				- Child classes can declare their own properties and methods, the parent class won't have access to new properties or methods declared by the child class.
+					- Example:
+						```
+						class MyClass(ParentClass):
+							def __init__(self, no, idkman) -> None:
+								super().__init__(no):
+								#> new property
+								self.idkman = idkman
+							#> new method
+							def my_method(self) -> None:
+								print('probs')
+						```
+	- Polymorphism
+		- Definition:
+			- It means "many forms".
+			- Occurs when multiple classes that are related through inheritance, multiple functions or methods having the same name but perform different tasks.
+			- Overloading is a form of polymorphism.
+		- Syntax:
+			```
+			class <superclass_name>:
+				def <method_name>(<parameters>) -> <return_type>:
+					<statements>
+			class <subclass_name1>:
+				def <method_name>(<parameters>) -> <return_type>:
+					<statements>
+			class <subclass_name2>:
+				def <method_name>(<parameters>) -> <return_type>:
+					<statements>
+			class <subclass_name3>:
+				def <method_name>(<parameters>) -> <return_type>:
+					<statements>
+			```
+		- Example:
+			```
+			class MyClass:
+				def my_method(self) -> None:
+					print('idkman')
+			class Yes(MyClass):
+				def my_method(self) -> None:
+					print('lumbago')
+			class No(MyClass):
+				def my_method(self) -> None:
+					print('hello')
+			class Maybe(MyClass):
+				def my_method(self) -> None:
+					print('world')
+			
+			#> all classses possesses the same methods but have different purposes
+			```
+		- Note:
+			- Child classes are considered as polymorphism, as they inherit the methods and properties of their parent class.
+				- Child classes can use the same methods as the parent class, and they can also override the parent's methods.
+	- Encapsulation
+		- Definition:
+			- Ensures that sensitive data are hidden from users, any important value are hidden to prevent data leaks.
+			- Encapsulation is achieved through access modifiers, to access and retrieve private data certain methods are created and used, these are getter and setter methods.
+			- Why Encapsulation?
+				- It provides better control of classes, methods, and properties:
+					- Read-only for getter methods.
+					- Write-only for setter methods.
+				- Increases security and flexibility.
+					- Parts of code can be changed without compromising others
+				- Better data protection and validation.
+					- It prevents accidental modification of private data and better validation.
+		- Access modifiers
+			- public / default
+				- Definition:
+					- Properties and methods are able to be accessed outside the class, either directly or through objects.
+					- It no special declaration, properties are public by default.
+				- Syntax:
+					```
+					class <class_name>:
+						#> static properties
+						<variable_name1>
+						#> non-static method
+						def <method_name1>(<parameters>) -> <return_type>:
+							#> non-static properties
+							self.<variable_name2>
+						#> static method
+						@staticmethod
+						def <method_name2>(<variables>) -> <return_type>:
+							<statements>
+					```
+				- Example:
+					```
+					class MyClass:
+						#> static properties
+						maybe = 'yes'
+						#> static method
+						@staticmethod
+						def static_method(self) -> None:
+							pass
+						#> non-static method
+						def idkman(self) -> None:
+							#> non-static properties
+							self.probs = 'no'
+					
+					#> accessing public properties and methods
+					#> static elements
+					MyClass.static_method()
+					MyClass.maybe
+					#> non-static methods
+					lumbago = MyClass()
+					lumbago.idkman()
+					lumbago.probs
+					```
+			- protected
+				- Definition:
+					- Python does not have a "protected" Syntax like Java and C++ but by convention, having a single underscore _ before the name denotes a variable is protected.
+						- It means that the properties and methods must stay inside the class, while controlling how data can be accessed from the outside but elements are still accessible outside.
+				- Syntax:
+					```
+					class <class_name>:
+						#> static properties
+						_<variable_name1>
+						#> non-static method
+						def _<method_name1>(<parameters>) -> <return_type>:
+							#> non-static properties
+							self._<variable_name2>
+						#> static method
+						@staticmethod
+						def _<method_name2>(<variables>) -> <return_type>:
+							<statements>
+					```
+				- Example:
+					```
+					class MyClass:
+						#> static properties
+						_maybe = 'yes'
+						#> static method
+						@staticmethod
+						def _static_method(self) -> None:
+							pass
+						#> non-static method
+						def _idkman(self) -> None:
+							#> non-static properties
+							self._probs = 'no'
+					
+					#> accessing public properties and methods
+					#> static elements
+					MyClass.static_method()
+					MyClass.maybe
+					#> non-static methods
+					lumbago = MyClass()
+					lumbago.idkman()
+					lumbago.probs
+					```
+			- private
+				- Definition:
+					- Elements are completely inaccessible from outside the class, only through getter and setter methods.
+					- Declared using two underscores before the name, triggering name mangling.
+				- Name mangling
+					- Definition:
+						- Declaring an element name with a double underscore __ prefix before the name itself triggers name mangling, renaming the element by adding a \_<class_name> prefix before the name.
+							- Example:
+								```
+								class Yes:
+									__my_var
+								
+								#> becomes
+								_Yes__my_var
+								```
+						- Private methods and attributes are technically accessible via the "mangled" name but is unadvised.
+					- Syntax:
+						```
+						class <class_name>:
+							#> static properties
+							__<variable_name1>
+							#> non-static method
+							def __<method_name1>(<parameters>) -> <return_type>:
+								#> non-static properties
+								self.__<variable_name2>
+							#> static method
+							@staticmethod
+							def __<method_name2>(<variables>) -> <return_type>:
+								<statements>
+						```
+					- Example:
+						```
+						class MyClass:
+							#> static properties
+							__maybe = 'yes'
+							#> static method
+							@staticmethod
+							def __static_method(self) -> None:
+								pass
+							#> non-static method
+							def __idkman(self) -> None:
+								#> non-static properties
+								self.__probs = 'no'
+						
+						#> accessing public properties and methods
+						#> static elements
+						MyClass.static_method() -> Error
+						MyClass.maybe           -> Error
+						#> non-static methods
+						lumbago = MyClass()
+						lumbago.idkman()        -> Error
+						lumbago.probs           -> Error
+						```
 
-- accessing inner classes
-- to access an inner class, an object of the outer class must first be created
-- Syntax:
-```
-<object_name1> = <class_name>(<arguments>)
-<object_name2> = <object_name1>.<inner_class_name>(<arguments>)
-```
-- Example:
-```
-my_outer = OuterClass()
-my_inner = my_outer.InnerClass()
-```
-
-- Python objects
-- declaration
-- to create an object, it must become an instance of a class
-- Syntax:
-```
-<object_name> = <class_name>()
-```
-- Example:
-```
-my_obj = MyClass()
-```
-- it is possible to declare more than one instance of a class
-- Example:
-```
-idk = MyClass()
-man = MyClass()
-```
-- deletion
-- to remove or delete a class, the del keyword is used
-- Syntax:
-```
-del <object_name>
-```
-- Example:
-```
-del my_obj
-```
-
-- Inheritance
-- allows child classes to reuse properties from the parent class
-- prevents the duplication of the same methods
-- allows reusing without redeclaring the same methods
-- inheritance is grouped into two categories
-- parent class
-- also known as the superclass or the base class
-- it it where the child class inherits from
-- child class
-- also knows as the subclass or the derived class
-- it is what inherits from the parent class
-
-- declaration and definition
-- in Python, inheritance is done by enclosing the parent class in parentheses
-- right next to the name of the child class
-- Syntax:
-```
-class <child_class_name>(<parent_class_name>):
-	<statements>
-```
-- Example:
-```
-class ChildClass(ParentClass):
-	pass
-```
-- by default, when the __init__() method is not declared in the child class
-- it uses the __init__() method of the parent class
-- this is due to it inheriting every method including the constructor method
-- declaring another __init__() method overrides parent class' __init__() method
-- Syntax:
-```
-class <child_class_name>(<parent_class_name>):
-	def __init__(self, <parameters>) -> <return_type>:
-		<statements>
-```
-- adding the parent's __init__() method will complete the inheritance
-- without it, it loses access to the properties of the parent class
-- Syntax:
-```
-class <child_class_name>(<parent_class_name>):
-	def __init__(self, <parameters>) -> <return_type>:
-		<parent_class_name>.__init__(self, <parameters>)
-```
-- Example:
-```
-class ChildClass(ParentClass):
-	def __init__(self, yes, no) -> None:
-		ParentClass.__init__(self, yes, no)
-```
-- super()
-- lets the child inherit all properties and methods from its parent class
-- replaces the <parent_class_name>.__init__() method of inheiting
-- Syntax:
-```
-class <child_class_name>(<parent_class_name>):
-	def __init__(self, <parameters>) -> <return_type>:
-		super().__init__(<parameters>)
-```
-- Example:
-```
-class ChildClass(ParentClass):
-	def __init__(self, yes) -> None:
-		super().__init__(yes)
-```
-- child classes can declare their own properties and methods
-- the parent class won't have access to new properties or methods declared by the child class
-- Example:
-```
-class MyClass(ParentClass):
-	def __init__(self, no, idkman) -> None:
-		super().__init__(no):
-		#> new property
-		self.idkman = idkman
-	#> new method
-	def my_method(self) -> None:
-		print('probs')
-```
-
-- Polymorphism
-- means "many forms"
-- occurs when multiple classes that are related through inheritance
-- multiple functions or methods havivng the same name but perform different tasks
-- overloading is a form of polymorphism
-- Syntax:
-```
-class <superclass_name>:
-	def <method_name>(<parameters>) -> <return_type>:
-		<statements>
-class <subclass_name1>:
-	def <method_name>(<parameters>) -> <return_type>:
-		<statements>
-class <subclass_name2>:
-	def <method_name>(<parameters>) -> <return_type>:
-		<statements>
-class <subclass_name3>:
-	def <method_name>(<parameters>) -> <return_type>:
-		<statements>
-```
-- Example:
-```
-class MyClass:
-	def my_method(self) -> None:
-		print('idkman')
-class Yes(MyClass):
-	def my_method(self) -> None:
-		print('lumbago')
-class No(MyClass):
-	def my_method(self) -> None:
-		print('hello')
-class Maybe(MyClass):
-	def my_method(self) -> None:
-		print('world')
-
-#> all classses possesses the same methods but have different purposes
-```
-- child classes are considered as polymorphism
-- they inherit the methods and properties of their parent class
-- child classes can use the same methods as the parent class
-- child classes can also override the parent's methods
-
-- Encapsulation
-- ensures that sensitive data are hidden from users
-- any important value are hidden to prevent data leaks
-- encapsulation is achieved through access modifiers
-- to access and retrive private datam certain methods are created and used
-- these are getter and setter methods
-- why Encapsulation?
-- it provides better control of classes, methods, and properties
-- read-only for getter methods
-- write-only for setter methods
-- increases security and flexibility
-- parts of code can be changed without compromising others
-- better data protection and validation
-- prevents accidental modification of private data and better validation
-
-- access modifiers
-- public / default
-- properties and methods are able to be accessed outside the class
-- either directly or through objects
-- no special declaration, properties are public by default
-- Syntax:
-```
-class <class_name>:
-	#> static properties
-	<variable_name1>
-	#> non-static method
-	def <method_name1>(<parameters>) -> <return_type>:
-		#> non-static properties
-		self.<variable_name2>
-	#> static method
-	@staticmethod
-	def <method_name2>(<variables>) -> <return_type>:
-		<statements>
-```
-- Example:
-```
-class MyClass:
-	#> static properties
-	maybe = 'yes'
-	#> static method
-	@staticmethod
-	def static_method(self) -> None:
-		pass
-	#> non-static method
-	def idkman(self) -> None:
-		#> non-static properties
-		self.probs = 'no'
-
-#> accessing public properties and methods
-#> static elements
-MyClass.static_method()
-MyClass.maybe
-#> non-static methods
-lumbago = MyClass()
-lumbago.idkman()
-lumbago.probs
-```
-- protected
-- Python does not have a "protected" Syntax like Java and C++
-- by convention, having a single underscore _ before the name denotes a variable is protected
-- it means that the properties and methods must stay inside the class
-- while controlling how data can be accessed from the outside
-- elements are still accessible outside
-- Syntax:
-```
-class <class_name>:
-	#> static properties
-	_<variable_name1>
-	#> non-static method
-	def _<method_name1>(<parameters>) -> <return_type>:
-		#> non-static properties
-		self._<variable_name2>
-	#> static method
-	@staticmethod
-	def _<method_name2>(<variables>) -> <return_type>:
-		<statements>
-```
-- Example:
-```
-class MyClass:
-	#> static properties
-	_maybe = 'yes'
-	#> static method
-	@staticmethod
-	def _static_method(self) -> None:
-		pass
-	#> non-static method
-	def _idkman(self) -> None:
-		#> non-static properties
-		self._probs = 'no'
-
-#> accessing public properties and methods
-#> static elements
-MyClass.static_method()
-MyClass.maybe
-#> non-static methods
-lumbago = MyClass()
-lumbago.idkman()
-lumbago.probs
-```
-- private
-- elements are completely inaccessible from outside the class
-- only through getter and setter methods
-- declared using two underscores before the name __
-- triggers name mangling
-- name mangling
-- declaring an element name with a double underscore __ prefix before it triggers name mangling
-- renaming the element by adding a _<class_name> prefix before the name
-- private methods are tecnically accessible via the "mangled" name but is unadvised
-- Example:
-```
-class Yes:
-	__my_var
-
-#> becomes
-_Yes__my_var
-```
-- Syntax:
-```
-class <class_name>:
-	#> static properties
-	__<variable_name1>
-	#> non-static method
-	def __<method_name1>(<parameters>) -> <return_type>:
-		#> non-static properties
-		self.__<variable_name2>
-	#> static method
-	@staticmethod
-	def __<method_name2>(<variables>) -> <return_type>:
-		<statements>
-```
-- Example:
-```
-class MyClass:
-	#> static properties
-	__maybe = 'yes'
-	#> static method
-	@staticmethod
-	def __static_method(self) -> None:
-		pass
-	#> non-static method
-	def __idkman(self) -> None:
-		#> non-static properties
-		self.__probs = 'no'
-
-#> accessing public properties and methods
-#> static elements
-MyClass.static_method() -> Error
-MyClass.maybe           -> Error
-#> non-static methods
-lumbago = MyClass()
-lumbago.idkman()        -> Error
-lumbago.probs           -> Error
-```
-
-- getter and setter methods
-- to access and modify private properties of a class, getter and setter methods are used
-- since private properties are accessible inside the class
-- other methods or properties from the same class can influence it
-- setter methods
-- sets the value of a private property
-- Example:
-```
-class MyClass:
-	__my_var = None             #> private property, cannot be modified from the outside
-	def set_var(maybe) -> None: #> setter method
-		__my_var = maybe        #> sets the value using a parameter
-
-MyClass.set_var(10)             #> sets the private property through the setter method  
-```                
-- getter methods
-- retrives the value of a private property
-- Example:
-```
-class MyClass:
-	__my_var = 'yes'      #> private property, cannot be accessed from the outside
-	def get_var() -> str: #> getter method
-		return __my_var   #> retieves the value
-
-MyClass.get_var()         #> 'yes'
-#> retrieves the private property through the setter method   
-```
+		- getter and setter methods
+			- Definition:
+				- To access and modify private properties of a class, getter and setter methods are used.
+				- Since private properties are accessible inside the class, other methods or properties from the same class can influence it.
+			- Setter methods
+				- Definition:
+					- Sets the value of a private property.
+				- Example:
+					```
+					class MyClass:
+						__my_var = None             #> private property, cannot be modified from the outside
+						def set_var(maybe) -> None: #> setter method
+							__my_var = maybe        #> sets the value using a parameter
+					
+					MyClass.set_var(10)            #> sets the private property through the setter method  
+					```                
+			- Getter methods
+				- Definition:
+					- Retrieves the value of a private property.
+				- Example:
+					```
+					class MyClass:
+						__my_var = 'yes'      #> private property, cannot be accessed from the outside
+						def get_var() -> str: #> getter method
+							return __my_var   #> retieves the value
+					
+					MyClass.get_var()         #> 'yes'
+					#> retrieves the private property through the setter method   
+					```
