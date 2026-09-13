@@ -1,6 +1,8 @@
 ### > [Algorithms](../python/algorithms.md)
+### > [Classes](../python/classes.md)
 ### > [Conditionals](../python/conditionals.md)
 ### > [Data Collections](../python/data_collections.md)
+### > [Data Structures](../python/data_structures.md)
 ### > [Data Types](../python/data_types.md)
 ### > [Date and Time](../python/date_and_time.md)
 ### > [Exceptions](../python/exceptions.md)
