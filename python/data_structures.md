@@ -70,39 +70,39 @@
 				- Sample code:
 					```
 					class Stack:
-					#> creates an empty stack
-					def __init__(self) -> None:
-						self.stack: list = []
-					
-					#> method to check if the stack is empty
-					def is_empty(self) -> bool:
-						if len(self.stack):
-							return False
-						return True
-					
-					#> method to push elements to the end of the stack
-					def push(self, value) -> None:
-						self.stack.append(value)
-					
-					#> method to pop elements from the end of the stack and return it
-					def pop(self) -> int | None:
-						#> checks if the stack is empty
-						if self.is_empty():
-							print("stack is empty")
-							return None
-						return self.stack.pop()
-					
-					#> method to return the element at the top of the stack
-					def peek(self) -> int | None:
-						#> checks if the stack is empty
-						if self.is_empty():
-							print("stack is empty")
-							return None
-						return self.stack[-1]
-					
-					#> method to return the size of the stack
-					def size(self) -> int:
-						return len(self.stack)
+						#> creates an empty stack
+						def __init__(self) -> None:
+							self.stack: list = []
+						
+						#> method to check if the stack is empty
+						def is_empty(self) -> bool:
+							if len(self.stack):
+								return False
+							return True
+						
+						#> method to push elements to the end of the stack
+						def push(self, value) -> None:
+							self.stack.append(value)
+						
+						#> method to pop elements from the end of the stack and return it
+						def pop(self) -> int | None:
+							#> checks if the stack is empty
+							if self.is_empty():
+								print("stack is empty")
+								return None
+							return self.stack.pop()
+						
+						#> method to return the element at the top of the stack
+						def peek(self) -> int | None:
+							#> checks if the stack is empty
+							if self.is_empty():
+								print("stack is empty")
+								return None
+							return self.stack[-1]
+						
+						#> method to return the size of the stack
+						def size(self) -> int:
+							return len(self.stack)
 					```
 	- Stacks using linked lists
 		- Definition:
@@ -144,7 +144,7 @@
 					if is_empty:                            #> checks if the stack is empty
 						print("stack is empty")
 						return None                         #> returns if True
-					popped node = self.head                 #> popped_head gets the self.head object
+					popped_node = self.head                 #> popped_head gets the self.head object
 					self.head = self.head.next              #> the new head beomes the _.next attrubute_
 					#> or the pointer to the next item in the stack
 					#> from the top down
@@ -152,7 +152,7 @@
 					return popped_node.value                #> returns the value that the removed node holds
 			
 				#> method to look at the latest value in the stack
-				def peek(self) -> int | None
+				def peek(self) -> int | None:
 					if is_empty:                            #> checks if the stack is empty
 						print("stack is empty")
 						return None                         #> returns if True
@@ -163,13 +163,13 @@
 					return self.size                        #> returns the current size
 			
 				#> method to print the nodes in order
-					def traverse(self) -> None:
-						current_node = self.head                #> current_node gets a copy of self.head
-						while current_node:                     #> loops current_node until it results to None
-						#> which is the beginning of the stack
-							print(current_node.value, end="- ") #> prints the value of the current node it is at
-							current_node = current_node.next    #> changes the pointer to the next value in the stack
-						print()                                 #> adds a new line
+				def traverse(self) -> None:
+					current_node = self.head                #> current_node gets a copy of self.head
+					while current_node:                     #> loops current_node until it results to None
+					#> which is the beginning of the stack
+						print(current_node.value, end="- ") #> prints the value of the current node it is at
+						current_node = current_node.next    #> changes the pointer to the next value in the stack
+					print()                                 #> adds a new line
 			```
 - Queues
 	- Definition:
@@ -456,7 +456,7 @@
 		- Sample code:
 			```
 			#> create an empty list (can be a set or a dictionary)
-			my_list: list[list[]] = [[], [], [], [], []] #> stores 5 elements
+			my_list: list[list = [[], [], [], [], []] #> stores 5 elements
 			#> also called "buckets"
 			#> nested arrays prevent collisions
 			#> also called "chaining"   
@@ -612,7 +612,7 @@
 		- Tree implementation in Python
 			- Definition:
 				- Similar to Linked Lists, implementing Trees is the same to it
-			- binary tree implementation in Python:
+			- Binary tree implementation in Python:
 				```
 				class TreeNode:
 					def __init__(self, data) -> None:
@@ -684,8 +684,8 @@
 								if node is Node:
 									return
 								in_order_traversal(node.left)
-									print(node.data, end=", ")
-									in_order_traversal(node.right)
+								print(node.data, end=", ")
+								in_order_traversal(node.right)
 							```
 						- Note:
 							- In the function implementation, the first node to be printed is the leftmost node, calling itself until the child with the most leftmost node is printed.
@@ -1255,7 +1255,7 @@
 							return 0
 						return node.height
 	
-					def get_balance(node) -> int
+					def get_balance(node) -> int:
 						if not node:
 							return 0
 						return get_height(node.left) - get_height(node.right)
