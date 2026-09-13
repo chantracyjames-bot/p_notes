@@ -1,5 +1,13 @@
-**/*.md linguist-detectable=true
-**/*.md linguist-documentation=false
 
 # Set the default behavior for all files.
 * text=auto eol=lf
+
+# Separates Markdown files to their respective folders
+bash/**/*.md linguist-language=Bash linguist-detectable=true
+c/**/*.md linguist-language=C linguist-detectable=true
+cpp/**/*.md linguist-language=C++ linguist-detectable=true
+html/**/*.md linguist-language=HTML linguist-detectable=true
+java/**/*.md linguist-language=Java linguist-detectable=true
+mysql/**/*.md linguist-language=SQL linguist-detectable=true
+python/**/*.md linguist-language=Python linguist-detectable=true
+rust/**/*.md linguist-language=Rust linguist-detectable=true
