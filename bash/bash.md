@@ -1,5 +1,10 @@
 ## Concepts
-### > [general](general.md)
+### > [Conditionals](conditionals.md)
+### > [Data Types](data_types.md)
+### > [General](general.md)
+### > [Operators](operators.md)
+### > [Syntaxes](syntaxes.md)
+### > [Variables](variables.md)
 ## Basic Commands
 ### > [alias](commands/alias.md)
 ### > [cat](commands/cat.md)
