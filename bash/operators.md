@@ -1,0 +1,75 @@
+
+# Operators
+- Comparison operators
+	- Note:
+		- These are only used in comparing numbers.
+	- -eq
+		- Equal to.
+		- Checks if both values match, resulting as true if it is and returns false if not.
+	- -ne
+		- Not equal to.
+		- Checks if both values don't match, resulting as true if it is and returns false if not.
+	- -lt
+		- Less than.
+		- Checks if the value to the left is less that the value to the right, resulting as true if it is and returns false if not.
+	- -le
+		- Less than or equal to.
+		- Checks if the value to the left is less that the value to the right or if it is equal to it, resulting as true if it is and returns false if not.
+	- -gt
+		- Greater than.
+		- Checks if the value to the left is greater that the value to the right, resulting as true if it is and returns false if not.
+	- -ge
+		- Greater than or equal to.
+		- Checks if the value to the left is greater that the value to the right or if it is equal to it, resulting as true if it is and returns false if not.
+- String comparison operators	
+	- =
+		- Equal to.
+		- Returns true if both string are equal or if not, it returns false.
+	- !=
+		- Not equal to.
+		- Returns true if both string are not equal or if not, it returns false.
+	- >
+		- Greater than.
+		- Compares the characters of both strings from left to right.
+		- Returns true if the character to the left is greater than the right or if not, returns false.
+		- The logic is as follows; numbers < UPPERCASE < lowercase.
+	- <
+		- Less than
+		- Compares the characters of both strings from left to right.
+		- Returns true if the character to the left is LESS than the right or if not, returns false.
+		- The logic is as follows; numbers < UPPERCASE < lowercase.
+- Arithmetic operators	
+	- +
+		- Addition.
+		- Adds both numbers.
+	- -
+		- Subtraction.
+		- Subtracts both numbers.
+	- *
+		- Multiplication.
+		- Multiplies both numbers,
+	- /
+		- Division.
+		- Divides both numbers.
+	- %
+		- Modulus.		
+		- Returns the remainder of both numbers.
+- Logical operators
+	- &&
+		- Logical AND.
+		- Is true if both values are true.
+	- ||
+		- Logical OR.
+		- Is true if one of the values is true.
+	- !
+		- Logical NOT (negation).
+		- Flips the truth value.
+- File test operators	
+	- -e
+		- Checks if a file exists.
+	- -d
+		- Checks if a directory exists.
+	- -f
+		- Checks if the file is regular file.
+	- -s
+		- Checks if the file is not empty.
