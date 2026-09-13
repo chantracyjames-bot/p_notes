@@ -7,6 +7,7 @@
 ### > [Date and Time](../python/date_and_time.md)
 ### > [Exceptions](../python/exceptions.md)
 ### > [File Management](../python/file_management.md)
+### > [Functions](../python/functions.md)
 ### > [Iteratives](../python/iteratives.md)
 ### > [Modules](../python/modules.md)
 ### > [Operators](../python/operators.md)
