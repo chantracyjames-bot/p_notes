@@ -1,0 +1,36 @@
+
+# Overview
+- Bourne Again SHell
+	- Definition
+		- BASH is a text-based interface wherein it enables an interface that talks to the System to perform operations.
+		- It was created by Brian Fox in 1989, originating as an improved version of sh (Bourne Shell), the original Unix shell that was developed by Stephen Bourne.
+		- Why Bash?
+			- It is widely available in all Unix or Unix-like systems, like in BSD and its derivatives like macOS, and Linux distributions.
+			- It supports powerful scripting features like loops, conditionals and functions.
+			- It provides command history and tab completion, mainly for ease of use.
+			- It is able to be integrated with other Unix or Unix-like tools, importantly like automated scripts.
+	- Command List Overview
+		- _alias_
+			- Used to create shortcuts for verbose commands.
+		- _cat_
+			- Concatenate and display files (like .txt).		-
+		- _cd_
+			- Moves to a different working directory.	
+		- _cp_
+			- Copies files to another location or a different name.
+		- _echo_
+			- Displays a line of text to the terminal.
+		- _grep_
+			- Used to search for text patterns within files.
+		- _ls_
+			- Lists the contents of a directory.
+		- _mkdir_
+			- Creates a new folder.
+		- _mv_
+			- Moves files to another location or to rename it.
+		- _pwd_
+			- Prints the current working directory.
+		- _rm_
+			- Removes or deletes files or folders.
+		- _touch_
+			- Queries a file or creates a new files.
